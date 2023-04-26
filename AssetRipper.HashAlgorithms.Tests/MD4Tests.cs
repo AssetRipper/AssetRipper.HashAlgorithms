@@ -37,4 +37,22 @@ public partial class MD4Tests
 			MD4.HashData(Array.Empty<byte>(), new byte[17]);
 		});
 	}
+
+	[Test]
+	public void EmptySourceDoesNotAffectTheHash()
+	{
+		byte[] data = Encoding.UTF8.GetBytes("abc");
+		byte[] hashExpected;
+		{
+			MD4 md4 = new();
+			hashExpected = md4.ComputeHash(data);
+		}
+		byte[] hashActual;
+		{
+			MD4 md4 = new();
+			md4.TransformBlock(data, 0, data.Length, null, default);
+			hashActual = md4.ComputeHash(Array.Empty<byte>());
+		}
+		Assert.That(hashActual, Is.EqualTo(hashExpected));
+	}
 }
