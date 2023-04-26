@@ -26,7 +26,12 @@ public sealed partial class MD4 : HashAlgorithm
 
 	protected override void HashCore(byte[] array, int offset, int length) => ProcessMessage(new ReadOnlySpan<byte>(array, offset, length));
 
-	protected override void HashCore(ReadOnlySpan<byte> source) => ProcessMessage(source);
+#if NETSTANDARD
+	private
+#else
+	protected override
+#endif
+		void HashCore(ReadOnlySpan<byte> source) => ProcessMessage(source);
 
 	protected override byte[] HashFinal()
 	{

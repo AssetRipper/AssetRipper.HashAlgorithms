@@ -1,14 +1,18 @@
 <Project>
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<LangVersion>Latest</LangVersion>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 
+		<Authors>ds5678</Authors>
+		<Company>AssetRipper</Company>
+		<Copyright>Copyright © ds5678</Copyright>
 		<Version>1.0.0</Version>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<Copyright>Copyright © ds5678</Copyright>
-		<Authors>ds5678</Authors>
+		<RepositoryUrl>https://github.com/AssetRipper/AssetRipper.HashAlgorithms</RepositoryUrl>
+		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,5 +23,16 @@
 		<Using Include="System.Linq" />
 		<Using Include="System.Threading" />
 		<Using Include="System.Threading.Tasks" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="PolySharp" Version="1.13.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+		<PackageReference Include="System.Memory" Version="4.5.5" />
 	</ItemGroup>
 </Project>

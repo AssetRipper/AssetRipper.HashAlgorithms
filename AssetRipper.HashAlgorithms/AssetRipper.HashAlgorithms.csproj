@@ -1,7 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net5.0;net6.0;net7.0</TargetFrameworks>
+		<IsTrimmable>true</IsTrimmable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<PackageId>AssetRipper.HashAlgorithms</PackageId>
+		<Description>Managed library for MD4.</Description>
+		<PackageTags>C# MD4 Hash</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
 
 </Project>
